@@ -1,24 +1,15 @@
-const name2 = process.argv[2]
-
-const obj = {
-  name: 'mark',
-  age: 23
-}
+// const logger = require('pino')() 
+const name2 = process.argv[2] 
+const obj = { name: 'mark', age: 23 } 
 
 const nameChecker = (name) => {
-  return new Promise((resolve, reject) => {
-    if (typeof name === 'string') {
-      resolve('Hello ' + name);
-    } else {
-      reject(new Error('A name should only be String'));
-    }
-  });
+  if (typeof name === 'string') {
+    return console.log('Hello ' + name); 
+  } // else if (typeof obj === 'object') { // return console.log('This came from Object ' + obj.age); // } 
+  throw new Error('A name should only be String') 
+} 
+try { // logger.info(name2) 
+  nameChecker(name2) 
+} catch (error) {
+  console.log(error);
 }
-
-nameChecker(name2)
-  .then((result) => {
-    console.log(result);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
